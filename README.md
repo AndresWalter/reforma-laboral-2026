@@ -9,32 +9,17 @@ Plataforma interactiva de análisis jurídico que compara la **Ley de Modernizac
 
 ---
 
-## 🖥️ Demo
-
-> Próximamente en Vercel
-
----
-
 ## ✨ Características
 
 | Módulo | Descripción |
 |--------|-------------|
 | **📊 Análisis de Impacto** | 16 puntos comparativos (Ley Actual vs Reforma) con filtros por categoría: Perjudiciales, Favorables, Estructurales |
-| **🤖 Chatbot con IA** | Asistente legal potenciado por Groq (Llama 3.3), con respuestas en formato de 3 pasos y 7 temas precargados |
+| **🤖 Chatbot con IA** | Asistente legal potenciado |
 | **🖼️ Infografías** | Carrusel interactivo con slides de análisis crítico |
 | **📄 Visor de Documento** | Texto completo del proyecto de ley con navegación por capítulos |
 | **🏔️ Ley de Glaciares** | Análisis paralelo de la reforma a la Ley de Glaciares |
 | **🌙 Dark Mode** | Soporte completo de modo claro/oscuro |
 
-### Chatbot — Formato de Respuesta
-
-Toda respuesta (local o IA) sigue una estructura estricta:
-
-```
-Paso 1: Respuesta directa (impacto para el trabajador)
-Paso 2: Sustento legal (artículos específicos)
-Paso 3: Acción / Cálculo / Consecuencia práctica
-```
 
 ### Seguridad y Optimización
 
@@ -55,7 +40,7 @@ Paso 3: Acción / Cálculo / Consecuencia práctica
 | [Vite 6](https://vite.dev) | Build tool y dev server |
 | [Tailwind CSS](https://tailwindcss.com) | Estilos utilitarios |
 | [Lucide React](https://lucide.dev) | Iconografía |
-| [Groq API](https://console.groq.com) | Motor de IA (Llama 3.3 70B) |
+
 
 ---
 
@@ -121,21 +106,13 @@ La aplicación estará disponible en `http://localhost:3000`.
 
 ---
 
-## 🌐 Deploy en Vercel
-
-El proyecto incluye `vercel.json` preconfigurado para SPA:
-
-1. Conectar el repositorio en [vercel.com](https://vercel.com)
-2. Agregar la variable de entorno `VITE_GROQ_API_KEY` en Settings → Environment Variables
-3. Deploy automático en cada push a `main`
-
 ---
 
 ## ⚙️ Variables de Entorno
 
 | Variable | Requerida | Descripción |
 |----------|-----------|-------------|
-| `VITE_GROQ_API_KEY` | Opcional | API Key de Groq para el chatbot IA. Sin ella, el chatbot funciona con respuestas locales precargadas |
+| `API_KEY` | Opcional | API Key para el chatbot IA. Sin ella, el chatbot funciona con respuestas locales precargadas |
 
 ---
 
@@ -167,7 +144,7 @@ Las contribuciones son bienvenidas. Para cambios significativos:
 
 ## 📄 Licencia
 
-Este proyecto es de código abierto bajo la licencia [MIT](LICENSE).
+Este proyecto es de código abierto.
 
 ---
 
@@ -177,4 +154,4 @@ Esta herramienta es de carácter **informativo y educativo**. No constituye ases
 
 ---
 
-**Desarrollado con ❤️ para la comunidad trabajadora argentina.**
+**Desarrollado por Andres para la comunidad trabajadora argentina.** 
