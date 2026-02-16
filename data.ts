@@ -165,6 +165,7 @@ export const glaciaresSummary: Infographic[] = [
 ];
 
 export const analysisPoints: AnalysisPoint[] = [
+  // --- PERJUDICIALES (Sentiment.NEGATIVE) ---
   {
     id: '1',
     title: 'Eliminación de Multas (Trabajo "En Negro")',
@@ -191,35 +192,67 @@ export const analysisPoints: AnalysisPoint[] = [
   },
   {
     id: '4',
-    title: 'Legalización del Fraude "Falso Autónomo"',
-    reformDescription: 'Carga de la prueba en el trabajador. Debe demostrar ser empleado encubierto. Facilita encubrir relaciones laborales.',
-    currentLawDescription: 'Presunción de laboralidad. Se asume que quien presta servicios es un empleado. El empleador debe probar lo contrario.',
+    title: 'Debilitamiento de la Presunción de Contrato',
+    reformDescription: 'La presunción de contrato de trabajo NO se aplicará si se emiten facturas o recibos profesionales. Facilita el encuadre como "independiente".',
+    currentLawDescription: 'Presunción fuerte de laboralidad. Se asume que quien presta servicios es empleado y el empleador debe probar lo contrario.',
     impact: Sentiment.NEGATIVE,
-    articleReference: 'Art. 23 LCT Reformado'
+    articleReference: 'Ref. Art. 23 LCT'
+  },
+  {
+    id: '13',
+    title: 'Recorte en el "Ius Variandi" (Daño Moral)',
+    reformDescription: 'El empleador solo tiene prohibido causar "perjuicio material" al cambiar condiciones. Se eliminó la prohibición de causar "perjuicio moral".',
+    currentLawDescription: 'Protección integral ante cambios abusivos en las condiciones laborales que causen perjuicio material o moral.',
+    impact: Sentiment.NEGATIVE,
+    articleReference: 'Art. 66 LCT'
+  },
+  {
+    id: '14',
+    title: 'Derogación de Leyes Protectoras',
+    reformDescription: 'Se derogan leyes específicas como el Estatuto del Viajante de Comercio y zonas grises en Teletrabajo.',
+    currentLawDescription: 'Regímenes específicos (Estatutos Profesionales) que otorgaban derechos adicionales a ciertos sectores.',
+    impact: Sentiment.NEGATIVE,
+    articleReference: 'Derogaciones Varias'
+  },
+  {
+    id: '15',
+    title: 'Actualización de Créditos Judiciales a la Baja',
+    reformDescription: 'Nuevo tope para intereses en juicios: IPC + 3% anual. Suele ser inferior a las tasas de la Justicia Nacional, licuando el crédito del trabajador.',
+    currentLawDescription: 'Intereses definidos por la justicia (Actas CNAT) que buscan mantener el valor real del crédito alimentario.',
+    impact: Sentiment.NEGATIVE,
+    articleReference: 'Art. 276 LCT'
+  },
+  {
+    id: '9',
+    title: 'Bloqueos: Nueva Causal de Despido',
+    reformDescription: 'Los bloqueos o impedimentos de ingreso se tipifican como "injuria grave" objetiva, permitiendo el despido directo sin indemnización.',
+    currentLawDescription: 'El despido depende de la evaluación judicial de la gravedad de la falta en cada caso concreto.',
+    impact: Sentiment.NEGATIVE,
+    articleReference: 'Art. 242 LCT'
   },
   {
     id: '5',
-    title: 'Limitación Extrema del Derecho a Huelga',
-    reformDescription: 'Guardias mínimas tan altas (50%-75%) que anulan la efectividad de la huelga en Educación, Transporte, Industria, etc.',
-    currentLawDescription: 'Servicios esenciales limitados estrictamente (Salud, Agua, Control Aéreo).',
+    title: 'Limitación del Derecho a Huelga',
+    reformDescription: 'Eleva la cobertura de servicios mínimos: 75% para esenciales y 50% para actividades "trascendentales".',
+    currentLawDescription: 'Servicios esenciales restringidos a salud y vida. Menor exigencia de guardias mínimas en transporte o industria.',
     impact: Sentiment.NEGATIVE,
-    articleReference: 'Servicios Esenciales'
+    articleReference: 'Art. 24 y 97'
   },
   {
     id: '6',
-    title: 'Solidaridad de la Empresa Principal',
-    reformDescription: 'Empresa principal eximida de responsabilidad si controló papeles básicos. Si la contratista quiebra, el trabajador pierde.',
-    currentLawDescription: 'Empresa principal y contratista son "solidariamente responsables". El trabajador puede reclamar a la principal.',
+    title: 'Solidaridad (Art. 31 LCT)',
+    reformDescription: 'La responsabilidad solidaria en grupos económicos ahora solo aplica si hay "maniobras fraudulentas" demostradas.',
+    currentLawDescription: 'Solidaridad automática entre empresas relacionadas o grupos económicos ante deudas laborales.',
     impact: Sentiment.NEGATIVE,
-    articleReference: 'Art. 30 LCT'
+    articleReference: 'Art. 31 LCT'
   },
   {
-    id: '7',
-    title: 'Digitalización y Simplificación Registral',
-    reformDescription: 'Sistema electrónico simplificado para la registración laboral. Facilita burocracia, pero no mejora derechos sustanciales.',
-    currentLawDescription: 'Libros en papel y sistemas antiguos.',
-    impact: Sentiment.NEUTRAL, // Changed to Neutral to trigger "No Favorites" message if filtered
-    articleReference: 'Art. 52 LCT'
+    id: '11',
+    title: 'Trabajadores Independientes con Colaboradores (Art. 91)',
+    reformDescription: 'Crea un régimen especial donde un "independiente" puede tener hasta 5 "colaboradores" sin vínculo laboral. Implica: Sin indemnización por despido, sin vacaciones pagas, sin aguinaldo y sin cobertura plena de ART.',
+    currentLawDescription: 'Rige la presunción de laboralidad (Art. 23 LCT): quien trabaja bajo órdenes de otro es empleado y tiene todos los derechos laborales.',
+    impact: Sentiment.NEGATIVE,
+    articleReference: 'Anexo I - Art. 91'
   },
   {
     id: '8',
@@ -229,29 +262,69 @@ export const analysisPoints: AnalysisPoint[] = [
     impact: Sentiment.NEGATIVE,
     articleReference: 'Nuevo Título'
   },
+
+
+  // --- FAVORABLES (Sentiment.POSITIVE) ---
   {
-    id: '9',
-    title: 'Bloqueos como Justa Causa',
-    reformDescription: 'Bloquear un establecimiento es "injuria grave" que justifica automáticamente el despido sin indemnización.',
-    currentLawDescription: 'Despido es litigioso y depende de la gravedad y pruebas en juicio.',
-    impact: Sentiment.NEGATIVE,
-    articleReference: 'Art. 242 LCT'
+    id: '17',
+    title: 'Cómputo de Aportes por Regularización (PER)',
+    reformDescription: 'Trabajadores regularizados podrán computar hasta 60 meses de servicios con aportes (según SMVM) para jubilación.',
+    currentLawDescription: 'Los períodos no registrados ("en negro") requieren juicio o moratoria para ser reconocidos previsionalmente.',
+    impact: Sentiment.POSITIVE,
+    articleReference: 'Promoción Empleo'
   },
+  {
+    id: '18',
+    title: 'Compatibilidad con Planes Sociales',
+    reformDescription: 'Permite mantener planes sociales por 1 año tras la registración laboral, funcionando como subsidio al empleo.',
+    currentLawDescription: 'Generalmente el empleo registrado es incompatible con planes sociales, generando temor a perder la asistencia.',
+    impact: Sentiment.POSITIVE,
+    articleReference: 'Planes Sociales'
+  },
+  {
+    id: '19',
+    title: 'Seguridad Rurales Temporarios',
+    reformDescription: 'Mantienen asignaciones contributivas y acceden automáticamente a no contributivas al cesar el trabajo.',
+    currentLawDescription: 'Burocracia y demoras para restablecer asignaciones universales tras períodos de trabajo temporario registrado.',
+    impact: Sentiment.POSITIVE,
+    articleReference: 'Trabajo Agrario'
+  },
+  {
+    id: '22',
+    title: 'Régimen de Incentivo (RIMI)',
+    reformDescription: 'Beneficios fiscales para inversiones productivas que fomenten la creación de empleo registrado.',
+    currentLawDescription: 'Incentivos dispersos o inexistentes en un régimen unificado.',
+    impact: Sentiment.POSITIVE,
+    articleReference: 'Título RIMI'
+  },
+
+  // --- ESTRUCTURALES (Sentiment.WARNING) ---
   {
     id: '10',
-    title: 'Fondo de Cese Laboral',
-    reformDescription: 'Habilita sustituir la indemnización por despido por un fondo de cese o seguro privado (opcional por convenio).',
-    currentLawDescription: 'Sistema de indemnización tarifada a cargo directo del empleador.',
+    title: 'Fondo de Cese Laboral (Optional)',
+    reformDescription: 'Habilita sistema de fondo de cese (tipo UOCRA) por convenio. Reemplaza indemnización directa por cuentas individuales.',
+    currentLawDescription: 'Sistema de indemnización tarifada a cargo directo del empleador en el momento del despido.',
     impact: Sentiment.WARNING,
-    articleReference: 'Nuevo Sistema'
+    articleReference: 'Nuevo Sistema',
+    workerImpact: '⚠️ Perjuicio para el trabajador: El fondo de cese suele acumular montos menores a la indemnización legal. El empleador deja de pagar de su bolsillo al despedir, reduciendo el "costo" del despido y facilitando la rotación. En la práctica, el trabajador recibe menos dinero al ser desvinculado.'
   },
   {
-    id: '11',
-    title: 'Trabajadores Independientes con Colaboradores',
-    reformDescription: 'Permite a "independientes" contratar hasta 5 "colaboradores" sin vínculo laboral ni derechos de dependencia.',
-    currentLawDescription: 'Rige la presunción de laboralidad: quien trabaja para otro se considera empleado.',
+    id: '20',
+    title: 'Transferencia Justicia a CABA',
+    reformDescription: 'Traspaso de la Justicia Nacional del Trabajo a la Ciudad. Implica cambio de jurisdicción y jueces locales.',
+    currentLawDescription: 'Justicia Nacional del Trabajo (Federal en la práctica) con competencia en CABA.',
     impact: Sentiment.WARNING,
-    articleReference: 'Nuevo Régimen'
+    articleReference: 'Anexo II',
+    workerImpact: '⚠️ Perjuicio para el trabajador: La Justicia Nacional del Trabajo tiene una doctrina pro-operario consolidada durante décadas. El traspaso a la órbita de CABA implica jueces nuevos, sin esa tradición protectora, y riesgo de fallos menos favorables para el trabajador. Además, genera incertidumbre procesal durante la transición.'
+  },
+  {
+    id: '7',
+    title: 'Simplificación Registral (ARCA)',
+    reformDescription: 'Centraliza el registro ante ARCA (ex AFIP) y elimina requisitos duplicados. Busca eficiencia administrativa.',
+    currentLawDescription: 'Múltiples registros y libros (AFIP, Ministerio de Trabajo, Libros Ley), generando burocracia.',
+    impact: Sentiment.WARNING,
+    articleReference: 'Art. 52 LCT - ARCA',
+    workerImpact: '⚠️ Perjuicio para el trabajador: Al eliminar la obligación de llevar libros laborales físicos (Art. 52 LCT), se reduce la evidencia documental disponible para el trabajador en caso de juicio. Si el registro digital falla o es manipulado, el empleado pierde una herramienta clave para probar su antigüedad, categoría y salario.'
   },
   {
     id: '12',
@@ -259,7 +332,8 @@ export const analysisPoints: AnalysisPoint[] = [
     reformDescription: 'Limita la vigencia automática de cláusulas normativas al vencer el convenio, salvo acuerdo contrario.',
     currentLawDescription: 'Ultraactividad plena: el convenio sigue vigente íntegramente hasta ser reemplazado.',
     impact: Sentiment.WARNING,
-    articleReference: 'Negociación Colectiva'
+    articleReference: 'Negociación Colectiva',
+    workerImpact: '⚠️ Perjuicio para el trabajador: Sin ultraactividad, al vencer un convenio colectivo el trabajador pierde automáticamente beneficios negociados (adicionales salariales, jornada reducida, licencias especiales). Esto presiona al sindicato a negociar desde una posición más débil, ya que la alternativa es perder todo lo conquistado.'
   }
 ];
 

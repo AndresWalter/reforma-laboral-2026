@@ -22,7 +22,7 @@ const DocumentViewer: React.FC = () => {
       try {
         setLoading(true);
         // Load the PDF file
-        const loadingTask = pdfjs.getDocument('/reforma_clean.pdf');
+        const loadingTask = pdfjs.getDocument('/reforma_2026_ocr.pdf');
         const pdf = await loadingTask.promise;
         pdfRef.current = pdf;
         setNumPages(pdf.numPages);
@@ -151,7 +151,7 @@ const DocumentViewer: React.FC = () => {
 
         {/* Actions */}
         <a
-          href="/reforma_clean.pdf"
+          href="/reforma_2026_ocr.pdf"
           download
           className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors ml-auto md:ml-0"
         >

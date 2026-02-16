@@ -12,6 +12,7 @@ export interface AnalysisPoint {
   currentLawDescription: string; // The current state (for contrast)
   impact: Sentiment;
   articleReference?: string;
+  workerImpact?: string; // Impacto negativo específico para el trabajador
 }
 
 export interface DocumentSection {

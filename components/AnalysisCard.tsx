@@ -74,12 +74,12 @@ const AnalysisCard: React.FC<Props> = ({ point }) => {
           <div className="flex-1 md:pl-8">
             <div className="flex items-center gap-2 mb-3">
               <span className={`text-xs font-bold px-2 py-1 rounded uppercase ${isNegative
-                  ? 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400'
-                  : isWarning
-                    ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
-                    : isPositive
-                      ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                      : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-400'
+                ? 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400'
+                : isWarning
+                  ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
+                  : isPositive
+                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                    : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-400'
                 }`}>
                 Reforma
               </span>
@@ -88,6 +88,15 @@ const AnalysisCard: React.FC<Props> = ({ point }) => {
             <p className="text-slate-800 dark:text-slate-200 font-medium leading-relaxed text-sm md:text-base">
               {point.reformDescription}
             </p>
+
+            {/* Bloque de impacto negativo para el trabajador */}
+            {point.workerImpact && (
+              <div className="mt-4 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/50 rounded-xl p-4">
+                <p className="text-rose-700 dark:text-rose-300 text-sm leading-relaxed font-medium">
+                  {point.workerImpact}
+                </p>
+              </div>
+            )}
           </div>
 
         </div>

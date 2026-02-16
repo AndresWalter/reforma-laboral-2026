@@ -4,10 +4,13 @@ import DocumentViewer from './components/DocumentViewer';
 import AnalysisView from './components/AnalysisView';
 import InfographicsView from './components/InfographicsView';
 import GlaciaresView from './components/GlaciaresView';
+import TraspasoModal from './components/TraspasoModal';
+import ChatBot from './components/ChatBot';
 
 function App() {
   const [activeTab, setActiveTab] = useState<'analysis' | 'document' | 'infographics' | 'glaciares'>('analysis');
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [showTraspaso, setShowTraspaso] = useState(false);
 
   // Apply dark mode class to html element
   useEffect(() => {
@@ -94,6 +97,12 @@ function App() {
             >
               <Mountain className="w-4 h-4" />
               Ley de Glaciares
+            </button>
+            <button
+              onClick={() => setShowTraspaso(true)}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 hover:bg-indigo-200 dark:hover:bg-indigo-900/50 border border-indigo-200 dark:border-indigo-800 transition-colors"
+            >
+              Reforma Laboral - Anexo 1 - Transferencia de justicia
             </button>
           </div>
         </div>
@@ -183,7 +192,10 @@ function App() {
           </button>
         </div>
       </nav>
-    </div>
+
+      <TraspasoModal isOpen={showTraspaso} onClose={() => setShowTraspaso(false)} />
+      <ChatBot />
+    </div >
   );
 }
 
