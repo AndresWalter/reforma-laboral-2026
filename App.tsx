@@ -143,20 +143,18 @@ function App() {
             </button>
             <div className="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 p-2 hidden group-focus-within:block">
               <button
-                onClick={() => setShowTraspaso(true)}
-                className="w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 mb-1"
+                onClick={() => setActiveTab('glaciares')}
+                className={`flex items-center gap-2 w-full text-left px-4 py-3 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 mb-1 ${activeTab === 'glaciares' ? 'text-cyan-600 font-bold bg-cyan-50 dark:bg-cyan-900/20' : 'text-slate-700 dark:text-slate-200'}`}
               >
-                Reforma Laboral - Anexo 1
+                <Mountain className="w-4 h-4" />
+                Ley de Glaciares
               </button>
-              <a
-                href="https://mpago.li/2oP8F4o"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 w-full px-4 py-3 rounded-lg text-sm font-bold bg-emerald-600 text-white hover:bg-emerald-700"
+              <button
+                onClick={() => setActiveTab('analysis')}
+                className={`w-full text-left px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 ${activeTab === 'analysis' ? 'text-blue-600 font-bold' : 'text-slate-500'}`}
               >
-                <Heart className="w-4 h-4" />
-                Apoyar Proyecto
-              </a>
+                Volver a Análisis
+              </button>
             </div>
           </div>
         </div>
@@ -208,8 +206,6 @@ function App() {
             <span className="text-[10px] font-medium">Análisis</span>
           </button>
 
-
-
           <button
             onClick={() => setActiveTab('infographics')}
             className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${activeTab === 'infographics' ? 'text-blue-600 dark:text-blue-300' : 'text-slate-500 dark:text-slate-300 hover:text-slate-700 dark:hover:text-slate-100'
@@ -229,13 +225,22 @@ function App() {
           </button>
 
           <button
-            onClick={() => setActiveTab('glaciares')}
-            className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${activeTab === 'glaciares' ? 'text-cyan-600 dark:text-cyan-300' : 'text-slate-500 dark:text-slate-300 hover:text-slate-700 dark:hover:text-slate-100'
-              }`}
+            onClick={() => setShowTraspaso(true)}
+            className="flex flex-col items-center justify-center w-full h-full space-y-1 text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200"
           >
-            <Mountain className={`w-6 h-6 ${activeTab === 'glaciares' ? 'fill-current' : ''}`} strokeWidth={activeTab === 'glaciares' ? 2 : 2} />
-            <span className="text-[10px] font-medium">Glaciares</span>
+            <Scale className="w-6 h-6" strokeWidth={2} />
+            <span className="text-[10px] font-bold">Anexo 1</span>
           </button>
+
+          <a
+            href="https://mpago.li/2oP8F4o"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center w-full h-full space-y-1 text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-200"
+          >
+            <Heart className="w-6 h-6 fill-current" strokeWidth={2} />
+            <span className="text-[10px] font-bold">Apoyar</span>
+          </a>
         </div>
       </nav>
 

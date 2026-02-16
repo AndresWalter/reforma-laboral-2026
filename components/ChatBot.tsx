@@ -352,7 +352,7 @@ const ChatBot: React.FC = () => {
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={`fixed bottom-24 md:bottom-6 right-6 z-[100] p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 ${isOpen
-                    ? 'bg-slate-200 text-slate-800 rotate-90 dark:bg-slate-800 dark:text-white'
+                    ? 'hidden'
                     : 'bg-indigo-600 text-white hover:bg-indigo-700'
                     }`}
             >
@@ -372,6 +372,12 @@ const ChatBot: React.FC = () => {
                                 <p className="text-indigo-200 text-[10px] mt-1 uppercase tracking-wider font-semibold">IA · Reforma Laboral 2026</p>
                             </div>
                         </div>
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="bg-white/20 p-1.5 rounded-lg text-white hover:bg-white/30 transition-colors"
+                        >
+                            <X className="w-5 h-5" />
+                        </button>
                     </div>
 
                     <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50 dark:bg-slate-950/40">
