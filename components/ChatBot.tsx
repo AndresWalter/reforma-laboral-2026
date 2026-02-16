@@ -241,11 +241,6 @@ const ChatBot: React.FC = () => {
     };
 
     const callGroqAPI = useCallback(async (userQuery: string): Promise<string> => {
-        const apiKey = import.meta.env.VITE_GROQ_API_KEY;
-        if (!apiKey) {
-            return "Lo siento, la conexión con el asistente de IA no está configurada.";
-        }
-
         // --- Sanitizar antes de enviar ---
         const cleanQuery = sanitizeInput(userQuery);
         const cacheKey = normalize(cleanQuery);
@@ -268,35 +263,22 @@ const ChatBot: React.FC = () => {
         abortControllerRef.current = controller;
 
         try {
-            const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            // Llamada al endpoint propio (Serverless Function)
+            const response = await fetch("/api/chat", {
                 method: "POST",
                 headers: {
-                    "Authorization": `Bearer ${apiKey}`,
                     "Content-Type": "application/json"
                 },
                 signal: controller.signal,
                 body: JSON.stringify({
-                    model: "llama-3.3-70b-versatile",
-                    messages: [
-                        {
-                            role: "system",
-                            content: `Experto en Reforma Laboral Argentina 2026. Responde CONCISO en 3 pasos:
-Paso 1: Impacto directo (negativo para el trabajador).
-Paso 2: Artículo legal (Art. 245, 56, 23, 200, 13, 242, 92bis).
-Paso 3: Acción/Consecuencia práctica.
-Contexto: Art.200 deroga ley 27.555. Art.23 elimina perjuicio moral. Art.56 tasa pasiva BCRA tope IPC+3% piso 67%. Art.13 sin presunción laboral con factura. Art.52 excluye SAC de indemnización. Art.242 bloqueos=despido.`
-                        },
-                        { role: "user", content: cleanQuery }
-                    ],
-                    temperature: 0.1,
-                    max_tokens: 500
+                    message: cleanQuery
                 })
             });
 
             // --- Validar respuesta HTTP ---
             if (!response.ok) {
                 if (response.status === 429) return "⚠️ Se alcanzó el límite de consultas. Intenta en unos minutos.";
-                if (response.status === 401) return "⚠️ Error de autenticación con el servidor de IA.";
+                if (response.status === 500) return "⚠️ Error en el servidor. Verifica que la API Key esté configurada.";
                 return `Error del servidor (${response.status}). Intenta nuevamente.`;
             }
 
@@ -378,7 +360,7 @@ Contexto: Art.200 deroga ley 27.555. Art.23 elimina perjuicio moral. Art.56 tasa
             </button>
 
             {isOpen && (
-                <div className="fixed bottom-24 right-6 z-[100] w-[350px] md:w-[420px] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col h-[550px] animate-slideUp">
+                <div className="fixed bottom-24 right-4 left-4 md:left-auto md:right-6 z-[100] md:w-[420px] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col h-[60vh] md:h-[550px] animate-slideUp">
 
                     <div className="bg-indigo-600 p-4 flex items-center justify-between">
                         <div className="flex items-center gap-3">
