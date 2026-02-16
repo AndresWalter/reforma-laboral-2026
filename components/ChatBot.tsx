@@ -351,7 +351,7 @@ const ChatBot: React.FC = () => {
         <>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`fixed bottom-6 right-6 z-[100] p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 ${isOpen
+                className={`fixed bottom-24 md:bottom-6 right-6 z-[100] p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 ${isOpen
                     ? 'bg-slate-200 text-slate-800 rotate-90 dark:bg-slate-800 dark:text-white'
                     : 'bg-indigo-600 text-white hover:bg-indigo-700'
                     }`}

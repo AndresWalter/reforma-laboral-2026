@@ -129,12 +129,37 @@ function App() {
             <p className="text-[10px] text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wide">Ley de Modernización</p>
           </div>
         </div>
-        <button
-          onClick={() => setIsDarkMode(!isDarkMode)}
-          className="p-2 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
-        >
-          {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setIsDarkMode(!isDarkMode)}
+            className="p-2 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
+          >
+            {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
+          {/* Mobile Actions Menu */}
+          <div className="relative group">
+            <button className="p-2 rounded-md bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
+              <LayoutDashboard className="w-5 h-5 rotate-90" />
+            </button>
+            <div className="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 p-2 hidden group-focus-within:block">
+              <button
+                onClick={() => setShowTraspaso(true)}
+                className="w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 mb-1"
+              >
+                Reforma Laboral - Anexo 1
+              </button>
+              <a
+                href="https://mpago.li/2oP8F4o"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 w-full px-4 py-3 rounded-lg text-sm font-bold bg-emerald-600 text-white hover:bg-emerald-700"
+              >
+                <Heart className="w-4 h-4" />
+                Apoyar Proyecto
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Main Content */}
