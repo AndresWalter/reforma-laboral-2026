@@ -1,5 +1,11 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { MessageCircle, X, Send, Bot, User, Sparkles } from 'lucide-react';
+import { createClient } from '@supabase/supabase-js';
+
+// Inicializar Supabase cliente para el registro
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 interface Message {
     id: string;
@@ -297,6 +303,19 @@ const ChatBot: React.FC = () => {
         }
     }, []);
 
+    const logToSupabase = async (query: string, response: string | React.ReactNode) => {
+        try {
+            // Convertimos ReactNode a string simple si es necesario para el log
+            const responseText = typeof response === 'string' ? response : 'Respuesta local (HTML/Component)';
+
+            await supabase.from('chat_logs').insert([
+                { user_query: query, bot_response: responseText }
+            ]);
+        } catch (error) {
+            console.error("Error al registrar consulta en Supabase:", error);
+        }
+    };
+
     const handleSend = async (text?: string) => {
         const messageText = text || inputValue;
         if (!messageText.trim() || isTyping) return;
@@ -324,6 +343,9 @@ const ChatBot: React.FC = () => {
                 };
                 setMessages(prev => [...prev, botMsg]);
                 setIsTyping(false);
+
+                // Registro de consulta local
+                logToSupabase(messageText, responseData.content);
             }, 800);
         } else {
             const aiText = await callGroqAPI(messageText);
@@ -335,6 +357,9 @@ const ChatBot: React.FC = () => {
                     timestamp: new Date()
                 };
                 setMessages(prev => [...prev, botMsg]);
+
+                // El registro de IA se hace tanto en la API como aquí para asegurar
+                logToSupabase(messageText, aiText);
             }
             setIsTyping(false);
         }
