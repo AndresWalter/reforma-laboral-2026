@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AnalysisPoint, Sentiment } from '../types';
-import { AlertTriangle, CheckCircle2, ArrowRight, ShieldAlert, ShieldCheck, Scale, CircleSlash } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, ArrowRight, ShieldAlert, ShieldCheck, Scale, CircleSlash, Calculator } from 'lucide-react';
+import FondoCeseSimulator from './FondoCeseSimulator';
 
 interface Props {
   point: AnalysisPoint;
 }
 
 const AnalysisCard: React.FC<Props> = ({ point }) => {
+  const [showSimulator, setShowSimulator] = useState(false);
   const isNegative = point.impact === Sentiment.NEGATIVE;
   const isWarning = point.impact === Sentiment.WARNING;
   const isPositive = point.impact === Sentiment.POSITIVE;
@@ -97,11 +99,24 @@ const AnalysisCard: React.FC<Props> = ({ point }) => {
                 </p>
               </div>
             )}
-          </div>
 
+            {/* Simulado de Impacto para Fondo de Cese */}
+            {(point.id === '10' || point.id.startsWith('fal-')) && (
+              <button
+                onClick={() => setShowSimulator(true)}
+                className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-indigo-900/20 active:scale-95"
+              >
+                <Calculator className="w-5 h-5" />
+                Simular Impacto en mi Bolsillo
+              </button>
+            )}
+          </div>
         </div>
+
       </div>
-    </div>
+
+      <FondoCeseSimulator isOpen={showSimulator} onClose={() => setShowSimulator(false)} />
+    </div >
   );
 };
 

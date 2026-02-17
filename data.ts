@@ -309,6 +309,42 @@ export const analysisPoints: AnalysisPoint[] = [
     workerImpact: '⚠️ Perjuicio para el trabajador: El fondo de cese suele acumular montos menores a la indemnización legal. El empleador deja de pagar de su bolsillo al despedir, reduciendo el "costo" del despido y facilitando la rotación. En la práctica, el trabajador recibe menos dinero al ser desvinculado.'
   },
   {
+    id: 'fal-1',
+    title: 'Despido "Barato" y Fácil (Monetización)',
+    reformDescription: 'El costo del despido se paga mes a mes por anticipado. Despedir a un empleado de 20 años de antigüedad tiene costo CERO en el momento del despido.',
+    currentLawDescription: 'Despedir tiene un costo alto y disuasorio (1 sueldo por año) que protege la estabilidad del empleo.',
+    impact: Sentiment.NEGATIVE,
+    articleReference: 'Fondo de Cese',
+    workerImpact: 'Al eliminar el costo económico de despedir, se incentiva la rotación laboral. Tu antigüedad deja de ser un "seguro" de estabilidad.'
+  },
+  {
+    id: 'fal-2',
+    title: 'Licuación de la Indemnización',
+    reformDescription: 'El fondo acumula aportes sobre sueldos históricos. En una economía inflacionaria, ese dinero pierde valor real comparado con tu sueldo actual.',
+    currentLawDescription: 'La indemnización se calcula sobre tu MEJOR remuneración actual. Se actualiza automáticamente con tus aumentos de sueldo.',
+    impact: Sentiment.NEGATIVE,
+    articleReference: 'Fondo de Cese',
+    workerImpact: 'Recibirás significativamente MENOS dinero que con el sistema actual, especialmente si tuviste ascensos o buena carrera en la empresa.'
+  },
+  {
+    id: 'fal-3',
+    title: 'Financiamiento con tu Propio Salario',
+    reformDescription: 'El aporte al fondo (aprox 8%) sale de la masa salarial total. En la práctica, es dinero que podría ir a tu aumento de sueldo.',
+    currentLawDescription: 'La indemnización la paga la empresa de su patrimonio solo si decide despedirte.',
+    impact: Sentiment.NEGATIVE,
+    articleReference: 'Fondo de Cese',
+    workerImpact: 'Es un "salario diferido" obligatorio. Estás pagando mes a mes tu propio despido futuro, en lugar de recibir ese dinero en mano hoy.'
+  },
+  {
+    id: 'fal-4',
+    title: 'Riesgo de Administración',
+    reformDescription: 'Tu dinero depende de la solvencia y manejo financiero del ente administrador del fondo (privado, sindical o mixto).',
+    currentLawDescription: 'Tu crédito es directo contra el empleador y sus bienes.',
+    impact: Sentiment.NEGATIVE,
+    articleReference: 'Fondo de Cese',
+    workerImpact: 'Si el fondo invierte mal o quiebra, tu "mochila" se vacía. Suma un riesgo financiero a tu estabilidad laboral.'
+  }, ,
+  {
     id: '20',
     title: 'Transferencia Justicia a CABA',
     reformDescription: 'Traspaso de la Justicia Nacional del Trabajo a la Ciudad. Implica cambio de jurisdicción y jueces locales.',
