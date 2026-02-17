@@ -211,6 +211,7 @@ const ChatBot: React.FC = () => {
     ]);
     const [inputValue, setInputValue] = useState('');
     const [isTyping, setIsTyping] = useState(false);
+    const [showPromo, setShowPromo] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const abortControllerRef = useRef<AbortController | null>(null);
 
@@ -221,6 +222,14 @@ const ChatBot: React.FC = () => {
     useEffect(() => {
         scrollToBottom();
     }, [messages, isTyping, isOpen]);
+
+    // --- Mostrar promo después de un delay ---
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (!isOpen) setShowPromo(true);
+        }, 4000);
+        return () => clearTimeout(timer);
+    }, [isOpen]);
 
     // --- Cleanup al desmontar: abortar fetches pendientes ---
     useEffect(() => {
@@ -375,15 +384,47 @@ const ChatBot: React.FC = () => {
 
     return (
         <>
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className={`fixed bottom-24 md:bottom-6 right-6 z-[100] p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 ${isOpen
-                    ? 'hidden'
-                    : 'bg-indigo-600 text-white hover:bg-indigo-700'
-                    }`}
-            >
-                {isOpen ? <X className="w-6 h-6" /> : <MessageCircle className="w-7 h-7" />}
-            </button>
+            {/* Burbuja Flotante Proactiva */}
+            <div className="fixed bottom-24 md:bottom-6 right-6 z-[100] flex flex-col items-end gap-3 translate-y-0 animate-bounce-slow">
+                {showPromo && !isOpen && (
+                    <div className="bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-xl border border-indigo-100 dark:border-indigo-900 mb-2 relative animate-slideUp group cursor-pointer"
+                        onClick={() => setIsOpen(true)}>
+                        <button
+                            onClick={(e) => { e.stopPropagation(); setShowPromo(false); }}
+                            className="absolute -top-2 -right-2 bg-slate-200 dark:bg-slate-700 rounded-full p-1 hover:bg-red-100 dark:hover:bg-red-900 transition-colors"
+                        >
+                            <X className="w-3 h-3 text-slate-500" />
+                        </button>
+                        <div className="flex items-center gap-2">
+                            <div className="bg-indigo-100 dark:bg-indigo-900/50 p-1.5 rounded-lg">
+                                <Sparkles className="w-4 h-4 text-indigo-600 dark:text-indigo-400 animate-pulse" />
+                            </div>
+                            <p className="text-sm font-medium text-slate-700 dark:text-slate-200 pr-2">
+                                ¿Tenés consultas sobre la reforma?
+                            </p>
+                        </div>
+                        {/* Triángulo del Tooltip */}
+                        <div className="absolute bottom-[-6px] right-6 w-3 h-3 bg-white dark:bg-slate-800 border-r border-b border-indigo-100 dark:border-indigo-900 rotate-45"></div>
+                    </div>
+                )}
+
+                <button
+                    onClick={() => { setIsOpen(!isOpen); setShowPromo(false); }}
+                    className={`relative p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center ${isOpen
+                        ? 'hidden'
+                        : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                        }`}
+                >
+                    {!isOpen && (
+                        <div className="absolute inset-0 rounded-full bg-indigo-500 animate-ping opacity-25"></div>
+                    )}
+                    {isOpen ? <X className="w-6 h-6" /> : (
+                        <div className="flex items-center gap-1">
+                            <Bot className="w-7 h-7" />
+                        </div>
+                    )}
+                </button>
+            </div>
 
             {isOpen && (
                 <div className="fixed bottom-24 right-4 left-4 md:left-auto md:right-6 z-[100] md:w-[420px] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col h-[60vh] md:h-[550px] animate-slideUp">
