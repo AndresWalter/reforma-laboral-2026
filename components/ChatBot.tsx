@@ -427,9 +427,9 @@ const ChatBot: React.FC = () => {
             </div>
 
             {isOpen && (
-                <div className="fixed bottom-24 right-4 left-4 md:left-auto md:right-6 z-[100] md:w-[420px] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col h-[60vh] md:h-[550px] animate-slideUp">
+                <div className="fixed bottom-24 right-4 left-4 md:left-auto md:right-6 z-[100] md:w-[420px] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl shadow-indigo-500/20 dark:shadow-indigo-500/40 border border-indigo-100 dark:border-indigo-500/50 ring-1 ring-indigo-500/20 overflow-hidden flex flex-col h-[60vh] md:h-[550px] animate-slideUp backdrop-blur-sm">
 
-                    <div className="bg-indigo-600 p-4 flex items-center justify-between">
+                    <div className="bg-indigo-600 p-4 flex items-center justify-between shadow-md relative z-10">
                         <div className="flex items-center gap-3">
                             <div className="bg-white/20 p-2 rounded-xl">
                                 <Bot className="w-6 h-6 text-white" />

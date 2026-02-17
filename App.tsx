@@ -6,6 +6,7 @@ import InfographicsView from './components/InfographicsView';
 import GlaciaresView from './components/GlaciaresView';
 import TraspasoModal from './components/TraspasoModal';
 import ChatBot from './components/ChatBot';
+import Footer from './components/Footer';
 
 function App() {
   const [activeTab, setActiveTab] = useState<'analysis' | 'document' | 'infographics' | 'glaciares'>('analysis');
@@ -245,6 +246,7 @@ function App() {
       </nav>
 
       <TraspasoModal isOpen={showTraspaso} onClose={() => setShowTraspaso(false)} />
+      <Footer />
       <ChatBot />
     </div >
   );
