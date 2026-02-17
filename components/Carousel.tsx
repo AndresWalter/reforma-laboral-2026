@@ -27,7 +27,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, id }) => {
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
@@ -37,7 +37,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, id }) => {
         setCurrentIndex(prev => prev + 1);
       }
     }
-    
+
     if (isRightSwipe) {
       if (currentIndex > 0) {
         setCurrentIndex(prev => prev - 1);
@@ -60,7 +60,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, id }) => {
   return (
     <>
       <div className="relative group max-w-4xl mx-auto">
-        <div 
+        <div
           className="aspect-video bg-slate-900 rounded-2xl overflow-hidden shadow-2xl relative"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
@@ -78,6 +78,8 @@ const Carousel: React.FC<CarouselProps> = ({ items, id }) => {
                   src={info.src}
                   alt={info.title}
                   className="max-h-full max-w-full object-contain"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             ))}
