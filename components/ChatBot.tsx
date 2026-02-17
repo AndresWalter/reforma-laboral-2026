@@ -5,7 +5,7 @@ import { createClient } from '@supabase/supabase-js';
 // Inicializar Supabase cliente para el registro
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+const supabase = (supabaseUrl && supabaseAnonKey) ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
 interface Message {
     id: string;
@@ -273,7 +273,8 @@ const ChatBot: React.FC = () => {
             const response = await fetch("/api/chat", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "X-App-Secret": import.meta.env.VITE_APP_CHAT_SECRET || ""
                 },
                 signal: controller.signal,
                 body: JSON.stringify({

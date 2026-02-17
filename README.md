@@ -87,8 +87,10 @@ npm install
 
 # 3. Configurar variables de entorno
 cp .env.example .env.local
-# Editar .env.local con tu API Key de Groq:
-# VITE_GROQ_API_KEY=gsk_tu_clave_aqui
+# Editar .env.local con tus claves:
+# GROQ_API_KEY=gsk_tu_clave_aqui
+# APP_CHAT_SECRET=tu_secreto_aqui
+# VITE_APP_CHAT_SECRET=tu_secreto_aqui
 
 # 4. Iniciar servidor de desarrollo
 npm run dev
@@ -112,7 +114,11 @@ La aplicación estará disponible en `http://localhost:3000`.
 
 | Variable | Requerida | Descripción |
 |----------|-----------|-------------|
-| `API_KEY` | Opcional | API Key para el chatbot IA. Sin ella, el chatbot funciona con respuestas locales precargadas |
+| `GROQ_API_KEY` | Si | Clave de Groq (Backend). |
+| `APP_CHAT_SECRET`| Si | Secreto de autorización (Backend). |
+| `VITE_APP_CHAT_SECRET` | Si | El mismo secreto anterior (Frontend). |
+| `VITE_SUPABASE_URL` | No | Para logs de chat. |
+| `VITE_SUPABASE_ANON_KEY`| No | Para logs de chat. |
 
 ---
 

@@ -6,12 +6,21 @@ export const config = {
 
 const supabaseUrl = process.env.SUPABASE_URL || '';
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || '';
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+const supabase = (supabaseUrl && supabaseAnonKey) ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
 export default async function handler(request: Request) {
     if (request.method !== 'POST') {
         return new Response(JSON.stringify({ error: 'Method Not Allowed' }), {
             status: 405,
+            headers: { 'Content-Type': 'application/json' }
+        });
+    }
+
+    // --- Hardening: Validar Secreto de Aplicación ---
+    const appSecret = request.headers.get("X-App-Secret");
+    if (appSecret !== process.env.APP_CHAT_SECRET) {
+        return new Response(JSON.stringify({ error: 'Unauthorized: Missing or invalid App Secret' }), {
+            status: 401,
             headers: { 'Content-Type': 'application/json' }
         });
     }
@@ -59,9 +68,11 @@ Contexto: Art.200 deroga ley 27.555. Art.23 elimina perjuicio moral. Art.56 tasa
         // or use waitUntil if available. Vercel Edge supports request.waitUntil)
 
         try {
-            await supabase.from('chat_logs').insert([
-                { user_query: message, bot_response: botResponse }
-            ]);
+            if (supabase) {
+                await supabase.from('chat_logs').insert([
+                    { user_query: message, bot_response: botResponse }
+                ]);
+            }
         } catch (logError) {
             console.error("Failed to log to Supabase:", logError);
         }
