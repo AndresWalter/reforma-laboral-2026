@@ -343,7 +343,7 @@ export const analysisPoints: AnalysisPoint[] = [
     impact: Sentiment.NEGATIVE,
     articleReference: 'Fondo de Cese',
     workerImpact: 'Si el fondo invierte mal o quiebra, tu "mochila" se vacía. Suma un riesgo financiero a tu estabilidad laboral.'
-  }, ,
+  },
   {
     id: '20',
     title: 'Transferencia Justicia a CABA',

@@ -205,13 +205,13 @@ const FondoCeseSimulator: React.FC<Props> = ({ isOpen, onClose, defaultSalary = 
 
                 <div className="p-3 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-800 rounded-lg">
                   <h4 className="font-bold text-indigo-800 dark:text-indigo-300 mb-2">Ejemplo Práctico (Sueldo $1.000.000)</h4>
-                  <div className="grid grid-cols-2 gap-4 text-xs">
-                    <div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                    <div className="p-2 bg-white/50 dark:bg-black/20 rounded-lg">
                       <span className="block font-bold text-gray-500 mb-1">Sistema Anterior</span>
                       <div className="font-medium">Base: $1.083.000 (con SAC prop.)</div>
                       <div className="text-emerald-600 font-bold text-lg">$5.415.000</div>
                     </div>
-                    <div>
+                    <div className="p-2 bg-white/50 dark:bg-black/20 rounded-lg">
                       <span className="block font-bold text-gray-500 mb-1">Nuevo Sistema FAL</span>
                       <div className="font-medium">Base: $1.000.000 (LIMPIA)</div>
                       <div className="text-red-600 font-bold text-lg">$5.000.000</div>

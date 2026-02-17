@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { analysisPoints } from '../data';
 import { Sentiment } from '../types';
 import AnalysisCard from './AnalysisCard';
-import { Filter, ThumbsDown, ThumbsUp, AlertTriangle, SearchX } from 'lucide-react';
+import FondoCeseSimulator from './FondoCeseSimulator';
+import { Filter, ThumbsDown, ThumbsUp, AlertTriangle, SearchX, Calculator } from 'lucide-react';
 
 const AnalysisView: React.FC = () => {
   const [filter, setFilter] = useState<Sentiment | 'ALL'>('ALL');
+  const [showSimulator, setShowSimulator] = useState(false);
 
   const filteredPoints = analysisPoints.filter(point =>
     filter === 'ALL' ? true : point.impact === filter
@@ -47,6 +49,23 @@ const AnalysisView: React.FC = () => {
         </div>
       </div>
 
+      {/* Botón de acceso directo al Simulador FAL */}
+      <button
+        onClick={() => setShowSimulator(true)}
+        className="w-full group relative overflow-hidden bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white p-4 rounded-xl shadow-lg shadow-indigo-900/20 transition-all transform hover:scale-[1.01] active:scale-[0.99]"
+      >
+        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="relative flex items-center justify-center gap-3">
+          <div className="bg-white/20 p-2 rounded-lg backdrop-blur-sm">
+            <Calculator className="w-6 h-6" />
+          </div>
+          <div className="text-left">
+            <h3 className="font-bold text-lg leading-tight">Simulá el impacto en tu bolsillo</h3>
+            <p className="text-xs text-indigo-100 font-medium opacity-90">Compará tu indemnización actual vs. el Fondo de Cese Laboral</p>
+          </div>
+        </div>
+      </button>
+
       <div className="grid grid-cols-1 gap-6">
         {filteredPoints.length > 0 ? (
           filteredPoints.map(point => (
@@ -77,6 +96,11 @@ const AnalysisView: React.FC = () => {
           </div>
         )}
       </div>
+
+      <FondoCeseSimulator
+        isOpen={showSimulator}
+        onClose={() => setShowSimulator(false)}
+      />
     </div>
   );
 };
