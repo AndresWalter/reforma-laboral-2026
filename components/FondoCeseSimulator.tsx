@@ -52,7 +52,7 @@ const FondoCeseSimulator: React.FC<Props> = ({ isOpen, onClose, defaultSalary = 
           console.error("Error al guardar la simulación:", error);
         }
       }
-    }, 2000);
+    }, 4000);
 
     return () => clearTimeout(timer);
   }, [salary, years]);
