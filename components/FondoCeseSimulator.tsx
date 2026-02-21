@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calculator, X, AlertTriangle, TrendingDown, Info } from 'lucide-react';
+import { supabase } from '../src/supabase';
 
 interface Props {
   isOpen: boolean;
@@ -31,6 +32,28 @@ const FondoCeseSimulator: React.FC<Props> = ({ isOpen, onClose, defaultSalary = 
 
     setFondoCese(falEstimation);
     setLossPercentage(35); // 35% de pérdida
+
+    // Registro automático en Supabase con Debounce
+    const timer = setTimeout(async () => {
+      if (salary > 0 && years > 0) {
+        try {
+          await supabase.from('simulaciones_impacto').insert([
+            {
+              sueldo_bruto: salary,
+              antiguedad: years,
+              indemnizacion_actual: current,
+              fondo_cese_estimado: falEstimation,
+              porcentaje_perdida: 35,
+              metadata: { source: 'simulator_v1' }
+            }
+          ]);
+        } catch (error) {
+          console.error("Error al guardar la simulación:", error);
+        }
+      }
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, [salary, years]);
 
   if (!isOpen) return null;
