@@ -10,6 +10,7 @@ interface Props {
 
 const FondoCeseSimulator: React.FC<Props> = ({ isOpen, onClose, defaultSalary = 800000 }) => {
   const [salary, setSalary] = useState(defaultSalary);
+  const [salaryInput, setSalaryInput] = useState(defaultSalary.toLocaleString('es-AR'));
   const [years, setYears] = useState(5);
   const [indemnizacionActual, setIndemnizacionActual] = useState(0);
   const [fondoCese, setFondoCese] = useState(0);
@@ -97,11 +98,20 @@ const FondoCeseSimulator: React.FC<Props> = ({ isOpen, onClose, defaultSalary = 
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                 <input
-                  type="number"
-                  value={salary}
-                  onChange={(e) => setSalary(Number(e.target.value))}
+                  type="text"
+                  value={salaryInput}
+                  onChange={(e) => {
+                    // Solo permitir números y puntos de miles
+                    const rawValue = e.target.value.replace(/\D/g, '');
+                    const numValue = Number(rawValue);
+
+                    if (!isNaN(numValue)) {
+                      setSalary(numValue);
+                      // Formatear con puntos para la vista
+                      setSalaryInput(numValue.toLocaleString('es-AR'));
+                    }
+                  }}
                   className="w-full pl-8 pr-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
-                  step="10000"
                 />
               </div>
             </div>
