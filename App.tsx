@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LayoutDashboard, FileText, Scale, Image as ImageIcon, Sun, Moon, Mountain, Heart } from 'lucide-react';
+import { LayoutDashboard, FileText, Scale, Image as ImageIcon, Sun, Moon, Mountain } from 'lucide-react';
 import DocumentViewer from './components/DocumentViewer';
 import AnalysisView from './components/AnalysisView';
 import InfographicsView from './components/InfographicsView';
@@ -106,15 +106,6 @@ function App() {
               Reforma Laboral - Anexo 1 - Transferencia de justicia
             </button>
 
-            <a
-              href="https://mpago.li/2oP8F4o"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-900/20 transition-all active:scale-95"
-            >
-              <Heart className="w-4 h-4 fill-current" />
-              Apoyar Proyecto
-            </a>
           </div>
         </div>
       </header>
@@ -174,17 +165,7 @@ function App() {
                 Esta herramienta interactiva contrasta los puntos clave del nuevo proyecto de ley con la legislación vigente.
                 Utiliza las tarjetas a continuación para entender qué cambia, qué derechos se modifican y cómo impacta en tu futuro laboral.
               </p>
-              <div className="mt-4 flex items-center gap-3">
-                <a
-                  href="https://mpago.li/2oP8F4o"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  <Heart className="w-3.5 h-3.5" />
-                  ¿Te resultó útil? Apoyá este observatorio independiente
-                </a>
-              </div>
+
             </div>
           </div>
         )}
@@ -233,15 +214,6 @@ function App() {
             <span className="text-[10px] font-bold">Anexo 1</span>
           </button>
 
-          <a
-            href="https://mpago.li/2oP8F4o"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center w-full h-full space-y-1 text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-200"
-          >
-            <Heart className="w-6 h-6 fill-current" strokeWidth={2} />
-            <span className="text-[10px] font-bold">Apoyar</span>
-          </a>
         </div>
       </nav>
 

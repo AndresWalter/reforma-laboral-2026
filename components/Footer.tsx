@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Scale, Heart } from 'lucide-react';
+import { Mail, Scale } from 'lucide-react';
 
 const Footer: React.FC = () => {
     return (
@@ -20,9 +20,9 @@ const Footer: React.FC = () => {
                         </p>
                     </div>
 
-                    {/* Contact & Support */}
+                    {/* Contact */}
                     <div className="space-y-6">
-                        <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Contacto y Apoyo</h3>
+                        <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Contacto</h3>
                         <div className="flex items-center gap-4">
                             <a
                                 href="mailto:enrique215walter@gmail.com"
@@ -30,18 +30,6 @@ const Footer: React.FC = () => {
                                 className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all border border-transparent hover:border-indigo-200 dark:hover:border-indigo-800 group"
                             >
                                 <Mail className="w-5 h-5" />
-                            </a>
-
-                            <a
-                                href="https://mpago.li/2oP8F4o"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 text-white hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-900/20 active:scale-95"
-                            >
-                                <div className="p-2 bg-white/20 rounded-lg">
-                                    <Heart className="w-4 h-4 fill-current" />
-                                </div>
-                                <span className="font-bold text-sm text-white">Apoyar este proyecto</span>
                             </a>
                         </div>
                     </div>
